@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#ffe8f8ff"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
@@ -17,16 +28,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/account_chooser"
-        android:id="@+id/account"
-        android:layout_gravity="center_horizontal"
+        android:text="@string/form_inser"
+        android:id="@+id/form"
         android:layout_margin="20dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/form_inser"
-        android:id="@+id/form"
+        android:text="@string/account_chooser"
+        android:id="@+id/account"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp" />
+
 </LinearLayout>
+</ScrollView>
+    </LinearLayout>
