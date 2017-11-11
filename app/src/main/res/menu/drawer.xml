@@ -2,20 +2,23 @@
 
     <item
         android:id="@+id/inicio"
-        android:title="Início"></item>
+        android:title="Início"
+        android:icon="@drawable/home"></item>
     <item
         android:id="@+id/config"
-        android:icon="@drawable/settings"
+        android:icon="@drawable/settings1"
         android:title="Configurações"></item>
     <item
         android:id="@+id/favoritos"
-        android:icon="@drawable/settings"
+        android:icon="@drawable/favorite"
         android:title="Favoritos"></item>
     <item
         android:id="@+id/ajuda"
-        android:icon="@drawable/help"
+        android:icon="@drawable/help1"
         android:title="Ajuda"></item>
     <item
         android:id="@+id/sobre"
-        android:title="Sobre"></item>
+        android:title="Sobre"
+        android:icon="@drawable/info">
+    </item>
 </menu>
