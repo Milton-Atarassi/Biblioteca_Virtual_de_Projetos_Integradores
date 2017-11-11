@@ -14,7 +14,7 @@
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
-            android:background="@android:color/holo_blue_bright"
+            android:background="@color/blue"
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
             android:layout_gravity="right">

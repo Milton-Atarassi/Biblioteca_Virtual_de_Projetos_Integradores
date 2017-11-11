@@ -9,13 +9,13 @@
     <string name="aceito">Aceito as condições</string>
     <string name="termos">
         <strong>BIBLIOTECA VIRTUAL DE PROJETOS INTEGRADORES</strong>\n\n\n
-        Este aplicativo é uma base de dados de Projetos Integradores, realizados por alunos da UNIVESP - Universidade Virtual do Estado de São Paulo, dos cursos de Engenharia de Computação, Engenharia de Produção, Licenciaturas em Física, Matemática, Química e Pedagogia.\n\n
+        Este aplicativo é uma base de dados de Projetos Integradores, realizados por alunos da UNIVESP - Universidade Virtual do Estado de São Paulo, dos cursos de Engenharia de Computação, Engenharia de Produção, Licenciaturas em Biologia, Física, Matemática, Química e Pedagogia.\n\n
         Aplicam-se as normas vigentes de direitos autorais aos conteúdos. Seu uso é autorizado, quando realizada a devida referenciação bibliográfica.\n\n
         Ao continuar, o usuário concorda com estes termos de uso.
     </string>
     <string name="texto_insercao">
         Para inserir um Projeto Integrador, clique no botão abaixo.\n
-        É preciso estar conectado a uma conta da UNIVESP, e para isso, clique no botão de login de conta, e depois retorne a este aplicativo e clique no botão de inserção.
+        É preciso estar conectado a uma conta da UNIVESP. Caso nao esteja conectado, clique no botão de login de conta, e depois retorne a este aplicativo e clique no botão de inserção.
     </string>
     <string name="account_chooser">Login em conta da UNIVESP</string>
     <string name="form_inser">FORMULÁRIO DE INSERÇÃO</string>
