@@ -98,9 +98,11 @@ public class Busca extends Fragment {
             lables = new ArrayList<String>();
             int colcount = testdata.getColumnCount();
 
-           for (int i=0;i<=colcount;i++) {
-                lables.add(testdata.getString(i));
-                //testdata.moveToNext();
+            while (!testdata.isAfterLast()) {
+                for (int i = 0; i < colcount; i++) {
+                    lables.add(testdata.getString(i));
+                }
+                testdata.moveToNext();
             }
             mDbHelper.close();
 

@@ -1,5 +1,6 @@
 package br.univesp.pi7sem2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,8 +11,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import br.univesp.pi7sem2.BDRemota.DriveConect;
 
 
 public class Inicio extends Fragment {
@@ -60,6 +64,21 @@ public class Inicio extends Fragment {
         menu.clear();
         inflater.inflate(R.menu.main_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.atualizar) {
+            try {
+                Intent intent = new Intent(getActivity(), DriveConect.class);
+                getActivity().startService(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+           return true;
+        }
+        return true;
     }
 
 
