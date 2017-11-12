@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.univesp.pi7sem2.BDRemota.DriveConect;
+import br.univesp.pi7sem2.BDRemota.DriveConect2;
 
 
 public class Inicio extends Fragment {
@@ -71,8 +72,10 @@ public class Inicio extends Fragment {
 
         if (item.getItemId() == R.id.atualizar) {
             try {
-                Intent intent = new Intent(getActivity(), DriveConect.class);
-                getActivity().startService(intent);
+/*                Intent intent = new Intent(getActivity(), DriveConect.class);
+                getActivity().startService(intent);*/
+                DriveConect2 novo = new DriveConect2();
+                novo.conect(getActivity());
             } catch (Exception e) {
                 e.printStackTrace();
             }
