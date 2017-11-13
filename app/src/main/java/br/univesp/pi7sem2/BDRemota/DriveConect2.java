@@ -37,7 +37,7 @@ public class DriveConect2
         this.context=context;
         DownloadFilesTask downloadFilesTask = new DownloadFilesTask();
         downloadFilesTask.execute();
-              Toast.makeText(context, "baixando dados...", Toast.LENGTH_SHORT).show();
+              Toast.makeText(context, "atualizando dados...", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -70,15 +70,18 @@ public class DriveConect2
                 FileWriter f = new FileWriter(file);
                 f.write(csvLine);
                 f.close();
-            } catch (IOException e) {
+
+                Toast.makeText(context,"arquivo baixado com sucesso",Toast.LENGTH_SHORT).show();
+
+                        } catch (IOException e) {
                 e.printStackTrace();
-            }
+
+                        }
 
         }catch(Exception e){
             e.printStackTrace();
             Toast.makeText(context,"print - "+e.getMessage(),Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(context,"arquivo baixado com sucesso",Toast.LENGTH_SHORT).show();
 
     }
     private List<String> downloadRemoteTextFileContent(){
@@ -105,7 +108,7 @@ public class DriveConect2
         try {
             assert mUrl != null;
             connection = (HttpURLConnection) mUrl.openConnection();
-            connection.setRequestMethod("GET");
+            //connection.setRequestMethod("GET");
             status = connection.getResponseCode();
             if ( status == HttpURLConnection.HTTP_OK) {
                 BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -115,6 +118,11 @@ public class DriveConect2
                     csvLine.add(line);
                     String line2 = line.replace(",","','");
                     if(test){
+  /*                      char[] a = line.toCharArray();
+                        for(int i=0;i<a.length;i++){
+                            char[] b=''+a+'';
+
+                        }*/
                     mDbHelper.insertData("'"+line2+"'");
                     }
                     test=true;
@@ -135,7 +143,7 @@ public class DriveConect2
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(context, "conection - " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "erro - " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });

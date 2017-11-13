@@ -62,10 +62,18 @@ public class TestAdapter {
     }
 
     public void clearData(){
-        mDb.execSQL("delete from tabela");
+        try {
+            mDb.execSQL("delete from tabela");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void insertData(String data){
-        mDb.execSQL("insert into tabela values("+data+")");
+        try {
+            mDb.execSQL("insert into tabela values("+data+")");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
