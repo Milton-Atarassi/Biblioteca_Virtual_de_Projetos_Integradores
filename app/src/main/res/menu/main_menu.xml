@@ -5,5 +5,10 @@
     android:orderInCategory="100"
     android:title="atualizar base de dados"
     app:showAsAction="never" />
+    <item
+        android:id="@+id/sugestoes"
+        android:orderInCategory="100"
+        android:title="enviar sugestões"
+        app:showAsAction="never" />
 
 </menu>

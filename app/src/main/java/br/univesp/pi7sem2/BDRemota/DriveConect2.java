@@ -1,11 +1,13 @@
 package br.univesp.pi7sem2.BDRemota;
 
 import android.app.IntentService;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -28,7 +30,7 @@ public class DriveConect2
     Context context;
 
     private static final String PATH_TO_SERVER =
-    "https://docs.google.com/spreadsheets/d/1Hpur-ezEXlFzjM-XleCyi02K9UuOuBa5ZeiOG_BcQWM/export?format=csv";
+    "https://docs.google.com/spreadsheets/d/1Hpur-ezEXlFzjM-XleCyi02K9UuOuBa5ZeiOG_BcQWM/export?format=tsv";
     SearchView searchView;
 
 
@@ -37,20 +39,30 @@ public class DriveConect2
         this.context=context;
         DownloadFilesTask downloadFilesTask = new DownloadFilesTask();
         downloadFilesTask.execute();
-              Toast.makeText(context, "atualizando dados...", Toast.LENGTH_SHORT).show();
     }
 
 
     private class DownloadFilesTask extends AsyncTask<URL, Void, List<String>> {
+        ProgressDialog progressDialog;
         protected List<String> doInBackground(URL... urls) {
             return downloadRemoteTextFileContent();
         }
+
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(context, "Atualizando base de dados", "Aguarde por favor", true, false);
+        }
+
         protected void onPostExecute(List<String> result) {
             if(result != null){
                 printCVSContent(result);
                 if(status!=HttpURLConnection.HTTP_OK){
                    Toast.makeText(context,"sem conexão",Toast.LENGTH_SHORT).show();
                 }
+                progressDialog.dismiss();
             }
         }
     }
@@ -66,7 +78,7 @@ public class DriveConect2
 
                         try {
                 File externalStorageDir = Environment.getExternalStorageDirectory();
-                File file = new File(externalStorageDir + "/bd_csv.csv");
+                File file = new File(externalStorageDir + "/bd.tsv");
                 FileWriter f = new FileWriter(file);
                 f.write(csvLine);
                 f.close();
@@ -116,14 +128,9 @@ public class DriveConect2
                 boolean test=false;
                 while((line = br.readLine()) != null){
                     csvLine.add(line);
-                    String line2 = line.replace(",","','");
+                    String line2 = line.replace("\t","','");
                     if(test){
-  /*                      char[] a = line.toCharArray();
-                        for(int i=0;i<a.length;i++){
-                            char[] b=''+a+'';
-
-                        }*/
-                    mDbHelper.insertData("'"+line2+"'");
+                     mDbHelper.insertData("'"+line2+"'");
                     }
                     test=true;
                 }
@@ -132,7 +139,7 @@ public class DriveConect2
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "base de dados atualizada com sucesso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "base de dados atualizado com sucesso", Toast.LENGTH_SHORT).show();
 
                     }
                 });

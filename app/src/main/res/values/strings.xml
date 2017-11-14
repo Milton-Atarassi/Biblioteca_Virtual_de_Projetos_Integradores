@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Biblioteca Virtual de PI</string>
+    <string name="app_name">Biblioteca Virtual de Projetos Integradores</string>
     <string name="label">valor</string>
     <string name="sobre">Sobre</string>
     <string name="favoritos">Favoritos</string>
@@ -15,9 +15,10 @@
     </string>
     <string name="texto_insercao">
         Para inserir um Projeto Integrador, clique no botão abaixo.\n
-        É preciso estar conectado a uma conta da UNIVESP. Caso nao esteja conectado, clique no botão de login de conta, e depois retorne a este aplicativo e clique no botão de inserção.
+        É preciso estar conectado a uma conta da UNIVESP. Caso não esteja conectado, clique no botão de login de conta, e depois retorne a este aplicativo e clique no botão de inserção.
     </string>
     <string name="account_chooser">Login em conta da UNIVESP</string>
     <string name="form_inser">FORMULÁRIO DE INSERÇÃO</string>
     <string name="opcoes">opções de pesquisa</string>
+    <string name="PI">Projeto Integrador</string>
 </resources>
