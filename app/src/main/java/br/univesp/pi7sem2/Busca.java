@@ -1,5 +1,6 @@
 package br.univesp.pi7sem2;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -26,7 +28,9 @@ public class Busca extends Fragment {
     View myView;
     Button myButton;
     boolean isUp;
-    List lables;
+    ArrayList<String> lables;
+    static ArrayList<String> dado;
+    static ArrayList<ArrayList<String>> dados;
     ListView listView;
     WebView wv;
 
@@ -61,6 +65,14 @@ public class Busca extends Fragment {
         });
 
         listView = (ListView) view.findViewById(R.id.listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(),Resultado.class);
+                intent.putExtra("posicao",position);
+                startActivity(intent);
+            }
+        });
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -96,19 +108,28 @@ public class Busca extends Fragment {
 
             Cursor testdata = mDbHelper.getTestData();
             lables = new ArrayList<String>();
+            dados = new ArrayList<>();
+            ArrayList<String> temp=null;
             int colcount = testdata.getColumnCount();
-
+            int j=1;
             while (!testdata.isAfterLast()) {
+                temp = new ArrayList<>();
                 for (int i = 0; i < colcount; i++) {
-                    lables.add(testdata.getString(i));
+                    temp.add(testdata.getString(i));
                 }
+                dados.add(temp);
+                lables.add(j + " - "+temp.get(6));
                 testdata.moveToNext();
+                j++;
             }
             mDbHelper.close();
 
         } catch (Exception e) {
         }
+    }
 
-
+    public static ArrayList<String> getDado(int position){
+        dado = dados.get(position);
+        return dado;
     }
 }

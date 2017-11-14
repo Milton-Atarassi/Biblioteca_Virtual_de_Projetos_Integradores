@@ -28,7 +28,7 @@ public class DriveConect2
     Context context;
 
     private static final String PATH_TO_SERVER =
-    "https://docs.google.com/spreadsheets/d/1Hpur-ezEXlFzjM-XleCyi02K9UuOuBa5ZeiOG_BcQWM/export?format=csv";
+    "https://docs.google.com/spreadsheets/d/1Hpur-ezEXlFzjM-XleCyi02K9UuOuBa5ZeiOG_BcQWM/export?format=tsv";
     SearchView searchView;
 
 
@@ -66,7 +66,7 @@ public class DriveConect2
 
                         try {
                 File externalStorageDir = Environment.getExternalStorageDirectory();
-                File file = new File(externalStorageDir + "/bd_csv.csv");
+                File file = new File(externalStorageDir + "/bd.tsv");
                 FileWriter f = new FileWriter(file);
                 f.write(csvLine);
                 f.close();
@@ -116,14 +116,9 @@ public class DriveConect2
                 boolean test=false;
                 while((line = br.readLine()) != null){
                     csvLine.add(line);
-                    String line2 = line.replace(",","','");
+                    String line2 = line.replace("\t","','");
                     if(test){
-  /*                      char[] a = line.toCharArray();
-                        for(int i=0;i<a.length;i++){
-                            char[] b=''+a+'';
-
-                        }*/
-                    mDbHelper.insertData("'"+line2+"'");
+                     mDbHelper.insertData("'"+line2+"'");
                     }
                     test=true;
                 }
@@ -132,7 +127,7 @@ public class DriveConect2
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "base de dados atualizada com sucesso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "base de dados atualizado com sucesso", Toast.LENGTH_SHORT).show();
 
                     }
                 });

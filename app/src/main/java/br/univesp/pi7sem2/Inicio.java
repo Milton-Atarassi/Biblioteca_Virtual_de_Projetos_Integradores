@@ -1,6 +1,7 @@
 package br.univesp.pi7sem2;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -80,6 +81,18 @@ public class Inicio extends Fragment {
                 e.printStackTrace();
             }
            return true;
+        }
+
+        if (item.getItemId() == R.id.sugestoes) {
+            try {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", "milton.atarassi@aluno.univesp.br", null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Sugestoes para aplicativo");
+                startActivity(Intent.createChooser(emailIntent, "Send email..."));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return true;
         }
         return true;
     }

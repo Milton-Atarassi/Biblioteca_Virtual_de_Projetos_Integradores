@@ -51,6 +51,11 @@
             android:name=".Leia"
             android:label="@string/leia" >
         </activity>
+        <activity
+            android:name=".Resultado"
+            android:label="@string/PI" >
+        </activity>
+
         <service android:name=".BDRemota.DriveConect"/>
     </application>
 

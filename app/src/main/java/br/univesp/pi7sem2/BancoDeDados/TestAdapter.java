@@ -69,11 +69,9 @@ public class TestAdapter {
         }
     }
 
-    public void insertData(String data){
-        try {
+    public void insertData(String data)throws SQLException {
+
             mDb.execSQL("insert into tabela values("+data+")");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 }
