@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="polos">
+        <item>TODOS</item>
+    <item>Agudos</item>
+    <item>Araçatuba</item>
+    <item>Araras</item>
+    <item>Assis</item>
+    <item>Atibaia</item>
+    <item>Avaré</item>
+    <item>Barretos</item>
+    <item>Barueri</item>
+    <item>Bragança Paulista</item>
+    <item>Cabreúva</item>
+    <item>Cajati</item>
+    <item>Capão Bonito</item>
+    <item>Caraguatatuba</item>
+    <item>Cruzeiro</item>
+    <item>Cubatão</item>
+    <item>Diadema</item>
+    <item>Dracena</item>
+    <item>Embu das Artes</item>
+    <item>Franca</item>
+    <item>Guarujá</item>
+    <item>Guarulhos</item>
+    <item>Ibitinga</item>
+    <item>Iguape</item>
+    <item>Indaiatuba</item>
+    <item>Itapetininga - Taboãozinho</item>
+    <item>Itapetininga - Vila Barth</item>
+    <item>Itapeva</item>
+    <item>Itapevi</item>
+    <item>Itu</item>
+    <item>Jales</item>
+    <item>Jandira</item>
+    <item>Jaú</item>
+    <item>Jundiaí</item>
+    <item>Mauá</item>
+    <item>Mococa</item>
+    <item>Mogi Mirim</item>
+    <item>Mongaguá</item>
+    <item>Morungaba</item>
+    <item>Novo Horizonte</item>
+    <item>Osasco</item>
+    <item>Osasco - UAB</item>
+    <item>Ourinhos</item>
+    <item>Paraguaçu Paulista</item>
+    <item>Pedreira</item>
+    <item>Peruíbe</item>
+    <item>Pindamonhangaba</item>
+    <item>Piracaia</item>
+    <item>Presidente Prudente</item>
+    <item>Registro</item>
+    <item>Santana de Parnaíba</item>
+    <item>Santo André</item>
+    <item>Santos</item>
+    <item>São Caetano do Sul</item>
+    <item>São João da Boa Vista</item>
+    <item>São José do Rio Pardo</item>
+    <item>São José do Rio Preto</item>
+    <item>São José dos Campos - Parque Tecnológico</item>
+    <item>São José dos Campos - Santana</item>
+    <item>São Paulo - Água Azul</item>
+    <item>São Paulo - Alvarenga</item>
+    <item>São Paulo - Aricanduva</item>
+    <item>São Paulo - Azul da Cor do Mar</item>
+    <item>São Paulo - Butantã</item>
+    <item>São Paulo - Campo Limpo</item>
+    <item>São Paulo - Capão Redondo</item>
+    <item>São Paulo - Casa Blanca</item>
+    <item>São Paulo - Cidade Dutra</item>
+    <item>São Paulo - Formosa</item>
+    <item>São Paulo - Freguesia do Ó</item>
+    <item>São Paulo - Heliópolis</item>
+    <item>São Paulo - Jaçanã</item>
+    <item>São Paulo - Jambeiro</item>
+    <item>São Paulo - Jardim Paulistano</item>
+    <item>São Paulo - Meninos</item>
+    <item>São Paulo - Navegantes</item>
+    <item>São Paulo - Paraisópolis</item>
+    <item>São Paulo - Parelheiros</item>
+    <item>São Paulo - Parque Bristol</item>
+    <item>São Paulo - Parque São Carlos</item>
+    <item>São Paulo - Parque Veredas</item>
+    <item>São Paulo - Pera Marmelo</item>
+    <item>São Paulo - Perus</item>
+    <item>São Paulo - Quinta do Sol</item>
+    <item>São Paulo - Rosa da China</item>
+    <item>São Paulo - São Mateus</item>
+    <item>São Paulo - São Rafael</item>
+    <item>São Paulo - Tatuapé</item>
+    <item>São Paulo - Tiquatira</item>
+    <item>São Paulo - Três Lagos</item>
+    <item>São Paulo - Vila Atlântica</item>
+    <item>São Paulo - Vila Curuçá</item>
+    <item>São Paulo - Vila do Sol</item>
+    <item>São Sebastião</item>
+    <item>São Vicente - Insular</item>
+    <item>São Vicente - Quartenário</item>
+    <item>Tarumã</item>
+    <item>Teodoro Sampaio</item>
+    <item>Vargem Grande do Sul</item>
+    <item>Vinhedo</item>
+    <item>Votuporanga</item>
+    </string-array>
+</resources>

@@ -5,13 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:focusable="false">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right">
+        android:layout_gravity="right"
+        android:focusable="false">
 
         <SearchView
             android:id="@+id/searchView"
@@ -19,72 +21,92 @@
             android:background="@color/blue"
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false"
-            android:layout_gravity="right">
+            android:layout_gravity="right"
+            android:focusable="true">
         </SearchView>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/opcoes"
-            android:id="@+id/my_button" />
+            android:id="@+id/my_button"
+            android:focusableInTouchMode="false" />
+
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/my_view"
-            android:layout_margin="10dp">
+            android:id="@+id/my_view">
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/view2">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                <TextView
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="filtros"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/view2">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="filtros"
+                        android:id="@+id/textView3" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/view1">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Todos"
+                        android:id="@+id/todos"
+                        android:layout_marginLeft="20dp"
+                        android:checked="true" />
 
-                <TextView
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="filtros"
-                    android:id="@+id/textView6" />
+                    android:layout_height="wrap_content">
 
-                <CheckBox
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Título"
+                        android:id="@+id/titulo"
+                        android:checked="true"
+                        android:layout_marginRight="50dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Descrição"
+                        android:id="@+id/descricao"
+                        android:checked="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New CheckBox"
-                    android:id="@+id/checkBox3" />
-            </LinearLayout>
+                    android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/view3">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Assuntos relacionados"
+                        android:id="@+id/assuntos"
+                        android:checked="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="filtros"
-                    android:id="@+id/textView4" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Autores"
+                        android:id="@+id/autores"
+                        android:checked="true" />
+                </LinearLayout>
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New CheckBox"
-                    android:id="@+id/checkBox" />
             </LinearLayout>
 
             <LinearLayout
@@ -96,14 +118,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="filtros"
+                    android:text="Curso "
                     android:id="@+id/textView5" />
 
                 <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cursos" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout" >
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner" />
+                    android:text="Polo "
+                    android:id="@+id/textView4" />
 
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/polos" />
             </LinearLayout>
 
         </LinearLayout>
@@ -114,8 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/webView"
-            android:layout_gravity="center"
-            android:layout_margin="30dp" />
+            android:layout_gravity="center" />
 
     <ListView
             android:layout_width="match_parent"

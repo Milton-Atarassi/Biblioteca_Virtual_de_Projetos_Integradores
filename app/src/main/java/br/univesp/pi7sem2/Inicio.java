@@ -75,8 +75,8 @@ public class Inicio extends Fragment {
             try {
 /*                Intent intent = new Intent(getActivity(), DriveConect.class);
                 getActivity().startService(intent);*/
-                DriveConect2 novo = new DriveConect2();
-                novo.conect(getActivity());
+                DriveConect2 novo = new DriveConect2(getActivity());
+                novo.conect();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -85,14 +85,8 @@ public class Inicio extends Fragment {
 
         if (item.getItemId() == R.id.sugestoes) {
             try {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-<<<<<<< HEAD
-                        "mailto", "milton.atarassi@aluno.univesp.br,everson.abreu@aluno.univesp.br", null));
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "milton.atarassi@aluno.univesp.br,everson.abreu@aluno.univesp.br", null));
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, "milton.atarassi@aluno.univesp.br,everson.abreu@aluno.univesp.br");
-
-=======
-                        "mailto", "milton.atarassi@aluno.univesp.br", null));
->>>>>>> 59c69663e8f85fd87cbe5ca307404f86a3299ad3
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Sugestoes para aplicativo");
                 startActivity(Intent.createChooser(emailIntent, "Send email..."));
             } catch (Exception e) {
