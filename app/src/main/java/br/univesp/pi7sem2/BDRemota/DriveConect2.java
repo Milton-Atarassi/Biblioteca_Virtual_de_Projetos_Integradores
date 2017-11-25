@@ -40,7 +40,7 @@ public class DriveConect2
         String main = "https://docs.google.com/";
         String type = "spreadsheets/d/";
         String format = "/export?format=tsv";
-        String id = context.getString(R.string.id2);
+        String id = context.getString(R.string.id);
         PATH_TO_SERVER =main+type+id+format;
     }
 
