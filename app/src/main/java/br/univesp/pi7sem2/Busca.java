@@ -7,39 +7,37 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.univesp.pi7sem2.BancoDeDados.BancoDados;
-import br.univesp.pi7sem2.BancoDeDados.TestAdapter;
 
 
 public class Busca extends Fragment {
+    static ArrayList<String> dado;
+    static ArrayList<ArrayList<String>> dados;
     SearchView searchView;
     View myView;
     Button myButton;
     boolean isUp;
     ArrayList<String> lables;
-    static ArrayList<String> dado;
-    static ArrayList<ArrayList<String>> dados;
     ListView listView;
     WebView wv;
+    TextView result;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.busca, null);
+        result = (TextView) view.findViewById(R.id.resultados);
 
         searchView = (SearchView) view.findViewById(R.id.searchView);
         searchView.setQueryHint("Busca");
@@ -109,7 +107,7 @@ public class Busca extends Fragment {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-               if(isUp) myView.setVisibility(View.GONE);
+                if (isUp) myView.setVisibility(View.GONE);
                 isUp = !isUp;
 
                 wv.setVisibility(View.GONE);
@@ -162,6 +160,10 @@ public class Busca extends Fragment {
                 ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_list_item_1, lables);
                 listView.setAdapter(adapter1);
+
+                result.setVisibility(View.VISIBLE);
+                result.setText("Resultado da busca:");
+
                 return false;
             }
 
@@ -182,6 +184,7 @@ public class Busca extends Fragment {
                 listView.setAdapter(adapter);
 
                 wv.setVisibility(View.VISIBLE);
+                result.setVisibility(View.INVISIBLE);
 
                 return false;
             }
@@ -189,6 +192,14 @@ public class Busca extends Fragment {
 
         wv = (WebView) view.findViewById(R.id.webView);
         wv.loadUrl("file:///android_asset/htmls/file.html");
+
+        result.setVisibility(View.VISIBLE);
+        result.setText("Projetos recentemente inseridos:");
+
+        dados("SELECT * FROM projetos ORDER BY id DESC LIMIT 10;");
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, lables);
+        listView.setAdapter(adapter2);
 
         return view;
     }
@@ -216,7 +227,7 @@ public class Busca extends Fragment {
                     temp.add(testdata.getString(i));
                 }
                 dados.add(temp);
-                lables.add(j + " - " + temp.get(6));
+                lables.add(j + " - " + temp.get(6) + "\n" + temp.get(2));
                 testdata.moveToNext();
                 j++;
             }

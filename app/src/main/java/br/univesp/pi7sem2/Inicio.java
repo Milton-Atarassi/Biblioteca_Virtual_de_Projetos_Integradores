@@ -1,5 +1,6 @@
 package br.univesp.pi7sem2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import br.univesp.pi7sem2.BDRemota.DriveConect;
 import br.univesp.pi7sem2.BDRemota.DriveConect2;
 
 
@@ -25,7 +26,10 @@ public class Inicio extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 2;
+    public static FragmentManager mFragmentManager;
+    public static FragmentTransaction mFragmentTransaction;
     View view;
+    Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class Inicio extends Fragment {
 
         setHasOptionsMenu(true);
 
+        context = getActivity();
 
         tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
@@ -75,12 +80,16 @@ public class Inicio extends Fragment {
             try {
 /*                Intent intent = new Intent(getActivity(), DriveConect.class);
                 getActivity().startService(intent);*/
-                DriveConect2 novo = new DriveConect2(getActivity());
+
+
+                DriveConect2 novo = new DriveConect2(context);
                 novo.conect();
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
-           return true;
+            return true;
         }
 
         if (item.getItemId() == R.id.sugestoes) {
@@ -138,5 +147,6 @@ public class Inicio extends Fragment {
             return null;
         }
     }
+
 
 }

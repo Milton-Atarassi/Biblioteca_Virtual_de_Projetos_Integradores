@@ -1,8 +1,10 @@
 package br.univesp.pi7sem2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
@@ -24,6 +26,7 @@ public class Resultado extends AppCompatActivity {
     Cursor dado;
     Menu menu;
     String shareContent;
+    SharedPreferences fav;
     private ShareActionProvider mShareActionProvider;
 
     @Override
@@ -42,6 +45,8 @@ public class Resultado extends AppCompatActivity {
 
         PopupMenu p = new PopupMenu(this, null);
         menu = p.getMenu();
+
+        fav = PreferenceManager.getDefaultSharedPreferences(this);
 
 
         String id = getIntent().getStringExtra("id");
@@ -119,14 +124,14 @@ public class Resultado extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.fav_menu, menu);
+        inflater.inflate(R.menu.projeto_menu, menu);
 
         MenuItem item = menu.findItem(R.id.menu_item_share);
 
         // Fetch and store ShareActionProvider
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
 
-        if (dado.getString(4) != null && dado.getString(4).equals("1")) {
+        if (dado.getString(4) != null) {
             menu.getItem(0).setVisible(false);
         } else {
             menu.getItem(1).setVisible(false);
@@ -139,9 +144,13 @@ public class Resultado extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.marcar:
                 try {
+                    int valor = fav.getInt("fav", -1) + 1;
+                    SharedPreferences.Editor editor = fav.edit();
+                    editor.putInt("fav", valor);
+                    editor.apply();
                     BancoDados fav = new BancoDados(this);
                     fav.open();
-                    fav.insertFav(dado.getString(16));
+                    fav.insertFav(dado.getString(16), valor);
                     Toast.makeText(this, "Salvo em Favoritos", Toast.LENGTH_SHORT).show();
                     menu.getItem(0).setVisible(false);
                     menu.getItem(1).setVisible(true);

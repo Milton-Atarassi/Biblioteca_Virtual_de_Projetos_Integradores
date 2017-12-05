@@ -6,18 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class BancoDados {
- //   private NovoBD mDbHelper;
-    private DataBaseHelper mDbHelper;
-    private SQLiteDatabase mDb;
-    Context context;
-
     private static final String name = "banco_de_dados.db";
     private static final String tabela="projetos";
-
     private static final String data="data";
     private static final String email="email";
     private static final String curso="curso";
@@ -35,8 +28,11 @@ public class BancoDados {
     private static final String linkvideo="linkvideo";
     private static final String grupo="grupo";
     private static final String id="id";
-
     private static final int databaseversion=1;
+    Context context;
+    //   private NovoBD mDbHelper;
+    private DataBaseHelper mDbHelper;
+    private SQLiteDatabase mDb;
 
 
     public BancoDados(Context ctx) {
@@ -100,16 +96,20 @@ public class BancoDados {
                 " where "+id+"='"+dado[16]+"';");
     }
 
-    public void insertFav(String data)throws SQLException{
-        mDb.execSQL("update "+ tabela +" set "+fav+"='1'"+" where "+id+"='"+data+"';");
+    public void insertFav(String data, int valor) throws SQLException {
+        mDb.execSQL("update " + tabela + " set " + fav + "='" + valor + "' where " + id + "='" + data + "';");
     }
 
     public void removeFav(String data)throws SQLException{
-        mDb.execSQL("update "+ tabela +" set "+fav+"=''"+" where "+id+"='"+data+"';");
+        mDb.execSQL("update " + tabela + " set " + fav + " = NULL" + " where " + id + "='" + data + "';");
+    }
+
+    public void removeAllFav() throws SQLException {
+        mDb.execSQL("update " + tabela + " set " + fav + " = NULL;");
     }
 
     public Cursor findFav()throws SQLException{
-       Cursor mCursor = mDb.rawQuery("select * from " + tabela + " where " + fav + "='1';", null);
+        Cursor mCursor = mDb.rawQuery("select * from " + tabela + " where " + fav + " IS NOT NULL ORDER BY " + fav + " DESC;", null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -167,6 +167,12 @@ public class BancoDados {
         }
         return mCursor;
 
+    }
+
+    public void deleteDado(String _id) throws SQLException {
+        String query = "DELETE FROM " + tabela +
+                " WHERE " + id + "='" + _id + "';";
+        mDb.execSQL(query);
     }
 
     public Cursor all() throws SQLException {

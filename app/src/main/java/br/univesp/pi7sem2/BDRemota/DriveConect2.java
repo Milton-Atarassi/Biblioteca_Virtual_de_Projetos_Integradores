@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -20,14 +23,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.univesp.pi7sem2.BancoDeDados.BancoDados;
+import br.univesp.pi7sem2.Inicio;
+import br.univesp.pi7sem2.MainActivity;
 import br.univesp.pi7sem2.R;
 
-public class DriveConect2
-{
+public class DriveConect2 {
+    public static FragmentManager mFragmentManager = MainActivity.mFragmentManager;
+    public static FragmentTransaction mFragmentTransaction = MainActivity.mFragmentTransaction;
     int status;
     Context context;
-
-    private String PATH_TO_SERVER ;
+    private String PATH_TO_SERVER;
 
     public DriveConect2(Context context) {
         this.context = context;
@@ -35,7 +40,8 @@ public class DriveConect2
         String type = "spreadsheets/d/";
         String format = "/export?format=tsv";
         String id = context.getString(R.string.id);
-        PATH_TO_SERVER =main+type+id+format;
+        PATH_TO_SERVER = main + type + id + format;
+
     }
 
     public void conect() {
@@ -110,8 +116,19 @@ public class DriveConect2
 
                         String[] line2 = line.split("\t");
                         if (!cursor.isAfterLast()) {
-                            if (!cursor.getString(0).equals(line2[0])) {
-                                mDbHelper.setDado(line2);
+                            while (!cursor.isAfterLast()) {
+                                if (!cursor.getString(16).equals(line2[16])) {
+                                    mDbHelper.deleteDado(cursor.getString(16));
+                                    cursor.moveToNext();
+                                } else {
+                                    if (!cursor.getString(0).equals(line2[0])) {
+                                        mDbHelper.setDado(line2);
+                                        break;
+                                    } else {
+                                        Log.v("banco de dados", "verificado");
+                                        break;
+                                    }
+                                }
                             }
                         } else {
                             String line3 = dado(line2);
@@ -126,6 +143,10 @@ public class DriveConect2
 
                 }
                 br.close();
+                while (!cursor.isAfterLast()) {
+                    mDbHelper.deleteDado(cursor.getString(16));
+                    cursor.moveToNext();
+                }
                 mDbHelper.close();
                 handler.post(new Runnable() {
                     @Override
@@ -135,7 +156,7 @@ public class DriveConect2
                     }
                 });
 
-                }
+            }
         } catch (final IOException e1) {
             e1.printStackTrace();
             handler.post(new Runnable() {
@@ -154,7 +175,7 @@ public class DriveConect2
 
                 }
             });
-            } finally {
+        } finally {
             if (connection != null) {
                 connection.disconnect();
             }
@@ -162,21 +183,22 @@ public class DriveConect2
         return csvLine;
     }
 
-public String dado(String[]line2){
-    String line3 = "'";
-    for (int i = 0; i < line2.length; i++)
-        if (i != 13) {
-            if (i != (line2.length - 1)) {
-                line3 += line2[i] + "','";
-            } else {
-                line3 += line2[i] + "'";
+    public String dado(String[] line2) {
+        String line3 = "'";
+        for (int i = 0; i < line2.length; i++)
+            if (i != 13) {
+                if (i != (line2.length - 1)) {
+                    line3 += line2[i] + "','";
+                } else {
+                    line3 += line2[i] + "'";
+                }
             }
-        }
-    return line3;
-}
+        return line3;
+    }
 
     private class DownloadFilesTask extends AsyncTask<URL, Void, List<String>> {
         ProgressDialog progressDialog;
+        Handler handler = new Handler(context.getMainLooper());
 
         protected List<String> doInBackground(URL... urls) {
             return downloadRemoteTextFileContent();
@@ -186,8 +208,12 @@ public String dado(String[]line2){
         protected void onPreExecute() {
             super.onPreExecute();
             //           Toast.makeText(context,"Atualizando base de dados",Toast.LENGTH_SHORT).show();
-
-            progressDialog = ProgressDialog.show(context, "Atualizando base de dados", "Aguarde por favor", true, false);
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog = ProgressDialog.show(context, "Atualizando base de dados", "Aguarde por favor", true, false);
+                }
+            });
         }
 
         protected void onPostExecute(List<String> result) {
@@ -198,7 +224,8 @@ public String dado(String[]line2){
                 }
             }
             progressDialog.dismiss();
-
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            mFragmentTransaction.replace(R.id.containerView, new Inicio()).commit();
         }
     }
 

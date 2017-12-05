@@ -24,5 +24,14 @@
     <string name='id'>1Hpur-ezEXlFzjM-XleCyi02K9UuOuBa5ZeiOG_BcQWM</string>
     <string name='id2'>1b82oYAsm9DoYABSEjJwKJTfmqvdm9tsuhDpjfOiHLOk</string>
     <string name='send_to'>Compartilhar Projeto</string>
+    <string name="inf">Este aplicativo foi desenvolvido pelo grupo SM1 - Polo São José dos Campos - UNIVESP\n
+    Universidade Virtual do Estado de São Paulo\n
+    Seu uso é livre, e seu conteúdo é regido pelas normas de software livre:\n
+    GNU General Public License (GPL) version 3\n
+    O código do projeto está disponível em:</string>
+    <string name="contato">milton.atarassi@aluno.univesp.br</string>
+    <string name="contato2">everson.abreu@aluno.univesp.br</string>
+    <string name="git">https://github.com/Milton-Atarassi/Biblioteca_Virtual_de_Projetos_Integradores</string>
+
 
 </resources>
