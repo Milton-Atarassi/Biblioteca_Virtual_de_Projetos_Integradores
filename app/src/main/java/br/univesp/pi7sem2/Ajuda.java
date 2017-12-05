@@ -11,7 +11,7 @@ public class Ajuda extends AppCompatActivity {
     @Override
     public void onCreate(Bundle Saved){
         super.onCreate(Saved);
-        setContentView(R.layout.teste);
+        setContentView(R.layout.ajuda);
         Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         //toolbar.showOverflowMenu();
         setSupportActionBar(toolbar);

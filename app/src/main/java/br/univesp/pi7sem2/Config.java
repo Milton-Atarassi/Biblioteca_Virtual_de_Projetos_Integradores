@@ -11,7 +11,7 @@ public class Config extends AppCompatActivity {
     @Override
     public void onCreate(Bundle Saved){
         super.onCreate(Saved);
-        setContentView(R.layout.teste);
+        setContentView(R.layout.config);
         Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         //toolbar.showOverflowMenu();
         setSupportActionBar(toolbar);
@@ -24,9 +24,5 @@ public class Config extends AppCompatActivity {
 
     }
 
-/*    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.teste, null);
-    }*/
+
 }

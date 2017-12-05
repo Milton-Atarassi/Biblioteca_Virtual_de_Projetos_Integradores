@@ -43,9 +43,17 @@ public class Favoritos extends AppCompatActivity {
         favoritos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(),Resultado.class);
-                intent.putExtra("id",dado.get(position));
-                        startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), Resultado.class);
+                intent.putExtra("id", dado.get(position));
+                startActivity(intent);
+            }
+        });
+
+        favoritos.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                return true;
             }
         });
     }

@@ -3,10 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/marcar"
+        android:icon="@drawable/abc_btn_rating_star_off_mtrl_alpha"
         android:title="marcar"
         app:showAsAction="always" />
     <item
         android:id="@+id/desmarcar"
+        android:icon="@drawable/abc_btn_rating_star_on_mtrl_alpha"
         android:title="desmarcar"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/menu_item_share"
+        android:actionProviderClass="android.widget.ShareActionProvider"
+        android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+        android:title="Share"
+        app:showAsAction="ifRoom" />
 </menu>

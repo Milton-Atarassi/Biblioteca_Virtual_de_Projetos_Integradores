@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -24,8 +24,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:stretchColumns="*"
-        android:shrinkColumns="*">
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
 
 
         <TableRow
@@ -40,18 +40,18 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Título"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 
-                android:text="New Text"
-                android:textSize="20dp"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
+                android:text="New Text"
+                android:textSize="20dp"
                 />
         </TableRow>
 
@@ -66,18 +66,18 @@
                 android:layout_height="wrap_content"
 
                 android:text="Descrição do projeto"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/desRes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="New Text"
-                android:textSize="20dp"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
+                android:text="New Text"
+                android:textSize="20dp"
                 />
 
         </TableRow>
@@ -94,18 +94,18 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Assuntos relacionados"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/assuntos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 
-                android:text="New Text"
-                android:textSize="20dp"
                 android:ellipsize="end"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:text="New Text"
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow
@@ -119,19 +119,19 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Link do relatório"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
-                android:text="New Text"
-                android:textSize="20dp"
+
+                android:autoLink="web"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
-                android:autoLink="web" />
+                android:text="New Text"
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow
@@ -145,18 +145,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Link do vídeo"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text"
-                android:textSize="20dp"
+                android:autoLink="web"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
-                android:autoLink="web" />
+                android:text="New Text"
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow
@@ -170,19 +170,19 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Arquivos do projeto"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/arquivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
-                android:text="New Text"
-                android:textSize="20dp"
+
+                android:autoLink="web"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
-                android:autoLink="web" />
+                android:text="New Text"
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow
@@ -197,19 +197,19 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Ano/Semestre"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/periodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
-                android:text="New Text"
-                android:textSize="20dp"
+
+                android:autoLink="web"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
-                android:autoLink="web" />
+                android:text="New Text"
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow
@@ -223,18 +223,18 @@
                 android:layout_height="wrap_content"
 
                 android:text="Observações"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/descDet"
+                android:id="@+id/obs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="New Text"
-                android:textSize="20dp"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
+                android:text="New Text"
+                android:textSize="20dp"
                 />
         </TableRow>
 
@@ -250,18 +250,18 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Curso"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/curso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 
-                android:text="New Text"
-                android:textSize="20dp"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
+                android:text="New Text"
+                android:textSize="20dp"
                 />
         </TableRow>
 
@@ -276,18 +276,18 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Polo"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/polo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 
-                android:text="New Text"
-                android:textSize="20dp"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
+                android:text="New Text"
+                android:textSize="20dp"
                 />
         </TableRow>
 
@@ -302,17 +302,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Grupo"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/grupo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text"
-                android:textSize="20dp"
                 android:ellipsize="end"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:text="New Text"
+                android:textSize="20dp" />
         </TableRow>
 
         <TableRow
@@ -326,18 +326,18 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Autores"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/autores"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 
-                android:text="New Text"
-                android:textSize="20dp"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
+                android:text="New Text"
+                android:textSize="20dp"
                 />
         </TableRow>
 
@@ -353,19 +353,19 @@
                 android:layout_height="wrap_content"
                 
                 android:text="Contato dos autores"
-                android:textSize="20dp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/contatos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
-                android:text="New Text"
-                android:textSize="20dp"
+
+                android:autoLink="email"
                 android:ellipsize="end"
                 android:inputType="textMultiLine"
-                android:autoLink="email" />
+                android:text="New Text"
+                android:textSize="20dp" />
         </TableRow>
 
     </TableLayout>
