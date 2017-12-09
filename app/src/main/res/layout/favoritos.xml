@@ -12,9 +12,10 @@
         android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
         app:navigationIcon="?attr/homeAsUpIndicator" />
     <ListView
+        android:id="@+id/favoritos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/favoritos"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="@color/orange_clear" />
 </LinearLayout>

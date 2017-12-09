@@ -32,6 +32,10 @@
     <string name="contato">milton.atarassi@aluno.univesp.br</string>
     <string name="contato2">everson.abreu@aluno.univesp.br</string>
     <string name="git">https://github.com/Milton-Atarassi/Biblioteca_Virtual_de_Projetos_Integradores</string>
+    <string name="text">A biblioteca também pode ser acessada pelo computador no endereço:</string>
+    <string name="link_web">https://sites.google.com/view/biblioteca-virtual-univesp</string>
+    <string name="ajuda_texto">Para obter informações de como utilizar este aplicativo, acesse o documento com dicas no link abaixo:</string>
+    <string name="link_ajuda">https://drive.google.com/open?id=1VMwuLQi6LRz4LraZvDRbFGJCOg07gXUX</string>
 
 
 </resources>

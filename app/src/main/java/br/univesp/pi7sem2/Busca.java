@@ -1,5 +1,6 @@
 package br.univesp.pi7sem2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -25,18 +26,60 @@ import br.univesp.pi7sem2.BancoDeDados.BancoDados;
 public class Busca extends Fragment {
     static ArrayList<String> dado;
     static ArrayList<ArrayList<String>> dados;
+    static ArrayList<String> lables;
+    static ListView listView;
+    static Context context;
     SearchView searchView;
     View myView;
     Button myButton;
     boolean isUp;
-    ArrayList<String> lables;
-    ListView listView;
     WebView wv;
     TextView result;
 
+    public static void dados(String query) {
+
+        try {
+/*            TestAdapter mDbHelper = new TestAdapter(getActivity());
+            mDbHelper.createDatabase();
+            mDbHelper.open();
+            Cursor testdata = mDbHelper.getTestData();*/
+
+            BancoDados mDbHelper = new BancoDados(context);
+            mDbHelper.open();
+            Cursor testdata = mDbHelper.searchSQL(query);
+
+            lables = new ArrayList<String>();
+            dados = new ArrayList<>();
+            ArrayList<String> temp = null;
+            int colcount = testdata.getColumnCount();
+            int j = 1;
+            while (!testdata.isAfterLast()) {
+                temp = new ArrayList<>();
+                for (int i = 0; i < colcount; i++) {
+                    temp.add(testdata.getString(i));
+                }
+                dados.add(temp);
+                lables.add(j + " - " + temp.get(6) + "\n" + temp.get(2));
+                testdata.moveToNext();
+                j++;
+            }
+            mDbHelper.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void atualizar() {
+        dados("SELECT * FROM projetos");
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(context,
+                android.R.layout.simple_list_item_1, lables);
+        listView.setAdapter(adapter2);
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.busca, null);
+        context = getActivity();
         result = (TextView) view.findViewById(R.id.resultados);
 
         searchView = (SearchView) view.findViewById(R.id.searchView);
@@ -96,9 +139,14 @@ public class Busca extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), Resultado.class);
-                intent.putExtra("id", dados.get(position).get(16));
-                startActivity(intent);
+                try {
+                    Intent intent = new Intent(getActivity(), Resultado.class);
+                    intent.putExtra("id", dados.get(position).get(16));
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
             }
         });
 
@@ -204,40 +252,6 @@ public class Busca extends Fragment {
         return view;
     }
 
-    public void dados(String query) {
-
-        try {
-/*            TestAdapter mDbHelper = new TestAdapter(getActivity());
-            mDbHelper.createDatabase();
-            mDbHelper.open();
-            Cursor testdata = mDbHelper.getTestData();*/
-
-            BancoDados mDbHelper = new BancoDados(getActivity());
-            mDbHelper.open();
-            Cursor testdata = mDbHelper.searchSQL(query);
-
-            lables = new ArrayList<String>();
-            dados = new ArrayList<>();
-            ArrayList<String> temp = null;
-            int colcount = testdata.getColumnCount();
-            int j = 1;
-            while (!testdata.isAfterLast()) {
-                temp = new ArrayList<>();
-                for (int i = 0; i < colcount; i++) {
-                    temp.add(testdata.getString(i));
-                }
-                dados.add(temp);
-                lables.add(j + " - " + temp.get(6) + "\n" + temp.get(2));
-                testdata.moveToNext();
-                j++;
-            }
-            mDbHelper.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void vis() {
         if (isUp) {
 
@@ -250,5 +264,4 @@ public class Busca extends Fragment {
         isUp = !isUp;
 
     }
-
 }

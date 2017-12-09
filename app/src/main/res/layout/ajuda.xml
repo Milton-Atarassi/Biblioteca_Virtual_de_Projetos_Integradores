@@ -13,4 +13,20 @@
         android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
         app:navigationIcon="?attr/homeAsUpIndicator" />
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ajuda_texto"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:autoLink="web"
+        android:text="@string/link_ajuda"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
 </LinearLayout>

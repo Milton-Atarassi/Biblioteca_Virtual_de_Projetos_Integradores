@@ -2,10 +2,12 @@ package br.univesp.pi7sem2.BDRemota;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -19,8 +21,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import br.univesp.pi7sem2.BancoDeDados.BancoDados;
 import br.univesp.pi7sem2.Inicio;
@@ -85,6 +90,10 @@ public class DriveConect2 {
         URL mUrl = null;
         HttpURLConnection connection = null;
         List<String> csvLine = null;
+        int ins = 0;
+        int upd = 0;
+        int delet = 0;
+        ArrayList<String> del = new ArrayList<>();
 
  /*       TestAdapter mDbHelper = new TestAdapter(context);
         mDbHelper.createDatabase();
@@ -109,34 +118,45 @@ public class DriveConect2 {
                 String line = "";
                 boolean test = false;
                 while ((line = br.readLine()) != null) {
-                    csvLine.add(line);
+                    //  csvLine.add(line);
+
                     if (test) {
     /*                    String line3 = line.replace("\t","','");
                         line3 = "'"+line3+"'";*/
 
                         String[] line2 = line.split("\t");
                         if (!cursor.isAfterLast()) {
-                            while (!cursor.isAfterLast()) {
-                                if (!cursor.getString(16).equals(line2[16])) {
-                                    mDbHelper.deleteDado(cursor.getString(16));
+                            boolean teste = !cursor.isAfterLast();
+                            while (teste) {
+                                String id = cursor.getString(16);
+                                String date = cursor.getString(0);
+                                if (!id.equals(line2[16])) {
+                                    del.add(cursor.getString(16));
+                                    delet++;
                                     cursor.moveToNext();
+                                    teste = !cursor.isAfterLast();
+                                    Log.v("banco de dados", "deletado");
                                 } else {
-                                    if (!cursor.getString(0).equals(line2[0])) {
+                                    if (!date.equals(line2[0])) {
                                         mDbHelper.setDado(line2);
-                                        break;
+                                        cursor.moveToNext();
+                                        upd++;
+                                        teste = false;
+                                        Log.v("banco de dados", "updated");
                                     } else {
+                                        cursor.moveToNext();
+                                        teste = false;
                                         Log.v("banco de dados", "verificado");
-                                        break;
                                     }
                                 }
                             }
                         } else {
                             String line3 = dado(line2);
-
-
                             mDbHelper.insertData(line3);
+                            ins++;
+                            cursor.moveToNext();
+                            Log.v("banco de dados", "inserido");
                         }
-                        cursor.moveToNext();
 
                     }
                     test = true;
@@ -145,13 +165,41 @@ public class DriveConect2 {
                 br.close();
                 while (!cursor.isAfterLast()) {
                     mDbHelper.deleteDado(cursor.getString(16));
+                    delet++;
                     cursor.moveToNext();
                 }
+
+                for (int k = 0; k < del.size(); k++) {
+                    mDbHelper.deleteDado(del.get(k).toString());
+                }
+
                 mDbHelper.close();
+
+                String message = "";
+                if (ins == 0 && upd == 0 && delet == 0) {
+                    message = "Sem modificações";
+                } else {
+                    if (ins != 0 && upd == 0 && delet == 0)
+                        message = ins + " inserções";
+                    else
+                        message = ins + " inserções, " + upd + " atualizações, " + delet + " deleções";
+
+                }
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+                dateFormat.setLenient(false);
+                String data_hora = dateFormat.format(new Date());
+
+                SharedPreferences bd_version = PreferenceManager.getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = bd_version.edit();
+                editor.putString("date", data_hora);
+                editor.apply();
+
+                final String finalMessage = message;
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "base de dados atualizado com sucesso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Base de dados atualizado com sucesso\n" + finalMessage, Toast.LENGTH_SHORT).show();
 
                     }
                 });
