@@ -195,8 +195,8 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
-                android:text="Ano/Semestre"
+
+                android:text="Ano/Bimestre"
                 android:textColor="@android:color/black"
                 android:textSize="20dp" />
 
