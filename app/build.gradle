@@ -8,8 +8,8 @@ android {
         applicationId "univesp.br.pi7sem"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 7
-        versionName "1.0"
+        versionCode 8
+        versionName "1.0.1"
     }
     buildTypes {
         release {

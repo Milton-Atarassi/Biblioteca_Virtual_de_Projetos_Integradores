@@ -77,14 +77,21 @@ public class Busca extends Fragment {
         listView.setAdapter(adapter2);
     }
 
+    public static void init_query() {
+        dados("SELECT * FROM projetos ORDER BY id DESC LIMIT 10;");
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(context,
+                android.R.layout.simple_list_item_1, lables);
+        listView.setAdapter(adapter2);
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.busca, null);
         context = getActivity();
         result = (TextView) view.findViewById(R.id.resultados);
 
         searchView = (SearchView) view.findViewById(R.id.searchView);
-        searchView.setQueryHint("Busca");
-        searchView.setIconifiedByDefault(true);
+        searchView.setQueryHint("Dica: use * como coringa");
+        //   searchView.setIconifiedByDefault(true);
 
         myView = view.findViewById(R.id.my_view);
         myButton = (Button) view.findViewById(R.id.my_button);
@@ -244,10 +251,7 @@ public class Busca extends Fragment {
         result.setVisibility(View.VISIBLE);
         result.setText("Projetos recentemente inseridos:");
 
-        dados("SELECT * FROM projetos ORDER BY id DESC LIMIT 10;");
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, lables);
-        listView.setAdapter(adapter2);
+        init_query();
 
         return view;
     }

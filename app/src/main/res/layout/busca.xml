@@ -24,7 +24,8 @@
             android:layout_gravity="right"
             android:background="@color/blue"
             android:focusable="true"
-            android:iconifiedByDefault="false">
+            android:gravity="left"
+            android:queryHint="Busca">
         </SearchView>
 
         <Button

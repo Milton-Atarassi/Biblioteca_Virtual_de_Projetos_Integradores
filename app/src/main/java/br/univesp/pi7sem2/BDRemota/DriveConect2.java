@@ -8,8 +8,6 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -28,13 +26,11 @@ import java.util.List;
 import java.util.Locale;
 
 import br.univesp.pi7sem2.BancoDeDados.BancoDados;
-import br.univesp.pi7sem2.Inicio;
-import br.univesp.pi7sem2.MainActivity;
+import br.univesp.pi7sem2.Busca;
 import br.univesp.pi7sem2.R;
 
 public class DriveConect2 {
-    public static FragmentManager mFragmentManager = MainActivity.mFragmentManager;
-    public static FragmentTransaction mFragmentTransaction = MainActivity.mFragmentTransaction;
+
     int status;
     Context context;
     private String PATH_TO_SERVER;
@@ -272,8 +268,8 @@ public class DriveConect2 {
                 }
             }
             progressDialog.dismiss();
-            mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.containerView, new Inicio()).commit();
+
+            Busca.init_query();
         }
     }
 
