@@ -26,7 +26,7 @@ public class Insercao extends Fragment {
         form.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSfMs7TetALgyANIieazJ1_F-fBBc2SHIWsUWHr7p-gm9nxJFg/viewform?c=0&w=1")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSdSJJF8EQi4pfESo8y230CeqS4I5sYiVeDv8yK0uOFakpo2_A/viewform")));
             }
         });
 

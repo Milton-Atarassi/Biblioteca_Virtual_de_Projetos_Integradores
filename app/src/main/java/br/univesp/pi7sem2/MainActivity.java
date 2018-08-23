@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import br.univesp.pi7sem2.BDRemota.DriveConect2;
+
 public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
@@ -108,7 +110,12 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-
+            try {
+                DriveConect2 novo = new DriveConect2(MainActivity.this);
+                novo.conect();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
     }
 

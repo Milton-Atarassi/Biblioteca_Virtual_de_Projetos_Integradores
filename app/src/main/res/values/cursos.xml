@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cursos">
+        <item>TODOS</item>
+        <item>ENGENHARIA DE COMPUTAÇÃO</item>
+        <item>ENGENHARIA DE PRODUÇÃO</item>
+        <item>LICENCIATURA EM BIOLOGIA</item>
+        <item>LICENCIATURA EM FÍSICA</item>
+        <item>LICENCIATURA EM MATEMÁTICA</item>
+        <item>LICENCIATURA EM QUÍMICA</item>
+        <item>PEDAGOGIA</item>
+    </string-array>
+</resources>
